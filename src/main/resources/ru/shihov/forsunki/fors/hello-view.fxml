@@ -5,20 +5,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.HBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="ru.shihov.forsunki.fors.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label fx:id="welcomeText" text="Ввод границ области (x1,y1,x1,y2). Пример (1,4,2,7.4), (6,2.12,4,7.4)..."/>
-    <HBox>
-        <TextField fx:id="inputField" HBox.hgrow="ALWAYS"/>
-        <TextField fx:id="epsilonField" maxWidth="40"/>
-    </HBox>
 
-    <Button text="Провести расчет!" onAction="#onStartResult"/>
-    <TextArea fx:id="outputField"/>
+    <Label fx:id="welcomeText"/>
+    <Button text="Hello!" onAction="#onHelloButtonClick"/>
 </VBox>
