@@ -56,8 +56,10 @@ public class HelloController {
                         Double.parseDouble(boarder[1]),
                         Double.parseDouble(boarder[2]),
                         Double.parseDouble(boarder[3]),
-                        Double.parseDouble(str.split("=")[1]
-                        ));
+                        Double.parseDouble(str.split("=")[1].split(" ")[0]),
+                        Integer.parseInt(str.split("n=")[1])
+                        );
+                System.out.println(ip);
                 if (str.contains("mOx")) {
                     listOx.add(ip);
                 } else if (str.contains("mFuel")) {
@@ -66,6 +68,7 @@ public class HelloController {
                     throw new RuntimeException();
                 }
             } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
                 outputArea.appendText(String.format("Некорректный ввод в строке: %s\\n", str));
             }
         }

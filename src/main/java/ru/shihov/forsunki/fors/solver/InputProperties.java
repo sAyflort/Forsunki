@@ -6,13 +6,15 @@ public class InputProperties {
     private final double y1;
     private final double y2;
     private final double flow;
+    private final int quantity;
 
-    public InputProperties(double x1, double x2, double y1, double y2, double flow) {
+    public InputProperties(double x1, double x2, double y1, double y2, double flow, int quantity) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.flow = flow;
+        this.quantity = quantity;
     }
 
     public double getX1() {
@@ -35,6 +37,10 @@ public class InputProperties {
         return flow;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return "InputProperties{" +
@@ -43,6 +49,7 @@ public class InputProperties {
                 ", y1=" + y1 +
                 ", y2=" + y2 +
                 ", flow=" + flow +
+                ", quantity=" + quantity +
                 '}';
     }
 }
