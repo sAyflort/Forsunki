@@ -9,12 +9,12 @@ public class FrenelUtil {
             double sumOx = 0;
             for (InputProperties ip:
                     inputPropertiesListOx) {
-                sumOx += (ip.getFlow()/4*ip.getQuantity())*getResultFrenelIntegral(ip.getX1(), ip.getX2(), step, epsilon)*getResultFrenelIntegral(ip.getY1(), ip.getY2(), step, epsilon);
+                sumOx += (ip.getFlow()*ip.getQuantity()/4)*getResultFrenelIntegral(ip.getX1(), ip.getX2(), step, epsilon)*getResultFrenelIntegral(ip.getY1(), ip.getY2(), step, epsilon);
             }
             double sumFuel = 0;
             for (InputProperties ip:
                     inputPropertiesListFuel) {
-                sumFuel += (ip.getFlow()/4*ip.getQuantity())*getResultFrenelIntegral(ip.getX1(), ip.getX2(), step, epsilon)*getResultFrenelIntegral(ip.getY1(), ip.getY2(), step, epsilon);
+                sumFuel += (ip.getFlow()*ip.getQuantity()/4)*getResultFrenelIntegral(ip.getX1(), ip.getX2(), step, epsilon)*getResultFrenelIntegral(ip.getY1(), ip.getY2(), step, epsilon);
             }
             return new OutputResult(sumOx, sumFuel, "OK");
         } catch (RuntimeException e) {
@@ -23,22 +23,17 @@ public class FrenelUtil {
     }
 
     private static double getResultFrenelIntegral(double x1, double x2, double step, double epsilon) throws RuntimeException{
-        System.out.println("x1 = " + x1);
-        System.out.println("x2 = " + x2);
-        x1 = x1/(Math.sqrt(2)*step);
-        x2 = x2/(Math.sqrt(2)*step);
-        System.out.println("x1 = " + x1);
-        System.out.println("x2 = " + x2);
-        double temp = x1;
+        if (x1 > x2) throw new RuntimeException("Некорректные координаты. Левая граница больше правой");
+        double z = x1/(Math.sqrt(2)*step);
         double sum = 0;
-        while(temp < x2) {
-            sum+=getValuePrefrenelFunction(temp)*epsilon;
-            temp+=epsilon;
+        while(z < x2/(Math.sqrt(2)*step)) {
+            sum+=getValuePrefrenelFunction(z)*epsilon;
+            z+=epsilon;
         }
         return 2*sum/Math.sqrt(Math.PI);
     }
 
-    private static double getValuePrefrenelFunction(double x) {
-        return Math.pow(Math.E, (-1)*Math.pow(x, 2));
+    private static double getValuePrefrenelFunction(double z) {
+        return Math.pow(Math.E, (-1)*Math.pow(z, 2));
     }
 }
