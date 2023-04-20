@@ -8,17 +8,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="ru.shihov.forsunki.fors.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label fx:id="welcomeText" text="Ввод границ области (x1,y1,x1,y2). Пример (1,4,2,7.4), (6,2.12,4,7.4)..."/>
-    <HBox>
-        <TextField fx:id="inputField" HBox.hgrow="ALWAYS"/>
-        <TextField fx:id="epsilonField" maxWidth="40"/>
+    <Label text="Ввод границ области, расход, кол-во таких форсунок x1,y1,x2,y2 mOx=m1 n=n1 или x1,y1,x2,y2 mFuel=m2 n=n2"/>
+    <Label text="Пример:"/>
+    <Label text="1,4,2,7.4 mOx=30 n=6"/>
+    <Label text="6,2.12,4,7.4 mFuel=15 n=1"/>
+    <Label text="..."/>
+    <Label text="ВВОД:"/>
+    <TextArea fx:id="inputArea" HBox.hgrow="ALWAYS"/>
+    <HBox spacing="5">
+        <Label text="Шаг расчета (дефолт 0.0001):"/>
+        <TextField fx:id="epsilonField" maxWidth="40" />
+        <Label text="Шаг форсунок:"/>
+        <TextField fx:id="stepField" maxWidth="40" />
     </HBox>
 
     <Button text="Провести расчет!" onAction="#onStartResult"/>
-    <TextArea fx:id="outputField"/>
+    <TextArea fx:id="outputArea"/>
 </VBox>
