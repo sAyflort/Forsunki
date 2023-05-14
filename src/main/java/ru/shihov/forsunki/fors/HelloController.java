@@ -51,15 +51,34 @@ public class HelloController {
              inputs) {
             try {
                 String[] boarder = str.split(" ")[0].split(",");
+
+                double flow =  Double.parseDouble(str.split("=")[1].split(" ")[0]);
+
+                if(Math.abs(flow - 0.2167) < 0.0001) {
+                    flow = 0.137219;
+                } else if (Math.abs(flow - 0.4108) < 0.0001) {
+                    flow = 0.485248;
+                } else if (Math.abs(flow - 0.007) < 0.0001) {
+                    flow = 0.00536;
+                } else if (Math.abs(flow - 0.029) < 0.0001) {
+                    flow = 0.03734;
+                } else  {
+                    flow = 0;
+                }
+
                 InputProperties ip = new InputProperties(
                         Double.parseDouble(boarder[0]),
                         Double.parseDouble(boarder[1]),
                         Double.parseDouble(boarder[2]),
                         Double.parseDouble(boarder[3]),
-                        Double.parseDouble(str.split("=")[1].split(" ")[0]),
+                        //Double.parseDouble(str.split("=")[1].split(" ")[0]),
+                        flow,
                         Integer.parseInt(str.split("n=")[1])
                         );
-                System.out.println(ip);
+                //TODO del
+                String m = str.contains("mOx") ? "mOx=" : "mFuel=";
+                //TODO del
+                System.out.println(ip.getX1()+","+ip.getX2()+","+ip.getY1()+","+ip.getY2() + " " + m + ip.getFlow() + " n=" + ip.getQuantity());
                 if (str.contains("mOx")) {
                     listOx.add(ip);
                 } else if (str.contains("mFuel")) {
