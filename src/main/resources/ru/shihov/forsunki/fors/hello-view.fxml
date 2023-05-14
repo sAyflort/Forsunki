@@ -13,7 +13,7 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label text="Ввод границ области, расход, кол-во таких форсунок x1,y1,x2,y2 mOx=m1 n=n1 или x1,y1,x2,y2 mFuel=m2 n=n2"/>
+    <Label text="Ввод границ области, расход, кол-во таких форсунок x1,x2,y1,y2 mOx=m1 n=n1 или x1,y1,x2,y2 mFuel=m2 n=n2"/>
     <Label text="Пример:"/>
     <Label text="1,4,2,7.4 mOx=30 n=6"/>
     <Label text="6,2.12,4,7.4 mFuel=15 n=1"/>
