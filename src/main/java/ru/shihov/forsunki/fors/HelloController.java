@@ -54,7 +54,7 @@ public class HelloController {
 
                 double flow =  Double.parseDouble(str.split("=")[1].split(" ")[0]);
 
-                if(Math.abs(flow - 0.2167) < 0.0001) {
+               /* if(Math.abs(flow - 0.2167) < 0.0001) {
                     flow = 0.137219;
                 } else if (Math.abs(flow - 0.4108) < 0.0001) {
                     flow = 0.485248;
@@ -64,13 +64,13 @@ public class HelloController {
                     flow = 0.03734;
                 } else  {
                     flow = 0;
-                }
+                }*/
 
                 InputProperties ip = new InputProperties(
-                        Double.parseDouble(boarder[0]),
-                        Double.parseDouble(boarder[1]),
-                        Double.parseDouble(boarder[2]),
-                        Double.parseDouble(boarder[3]),
+                        Double.parseDouble(boarder[0])/**13/12*/,
+                        Double.parseDouble(boarder[1])/**13/12*/,
+                        Double.parseDouble(boarder[2])/**13/12*/,
+                        Double.parseDouble(boarder[3])/**13/12*/,
                         //Double.parseDouble(str.split("=")[1].split(" ")[0]),
                         flow,
                         Integer.parseInt(str.split("n=")[1])
